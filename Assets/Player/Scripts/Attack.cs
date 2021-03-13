@@ -41,6 +41,7 @@ public class Attack : MonoBehaviour
         {
             canAttack = false;
             animator.SetBool("IsAttacking", true);
+            DoDashDamage();
             StartCoroutine(AttackCooldown());
         }
     }
@@ -53,6 +54,7 @@ public class Attack : MonoBehaviour
 
     public void DoDashDamage()
     {
+        print("attack");
         damageValue = Mathf.Abs(damageValue);
         Collider2D[] collidersEnemies = Physics2D.OverlapCircleAll(attackCheck.position, 0.9f);
         for (int i = 0; i < collidersEnemies.Length; i++)
