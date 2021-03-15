@@ -41,6 +41,8 @@ public class CharacterController2D : MonoBehaviour
     private float jumpWallDistX = 0; //Distance between player and wall
     private bool limitVelOnWallJump = false; //For limit wall jump distance with low fps
 
+    public Animator animatorWeapon;
+
     [Header("Events")]
     [Space]
 
@@ -176,6 +178,9 @@ public class CharacterController2D : MonoBehaviour
                 // Add a vertical force to the player.
                 animator.SetBool("IsJumping", true);
                 animator.SetBool("JumpUp", true);
+
+                animatorWeapon.SetBool("Grounded", false);
+
                 m_Grounded = false;
                 m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
                 canDoubleJump = true;
@@ -188,6 +193,8 @@ public class CharacterController2D : MonoBehaviour
                 m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, 0);
                 m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce / 1.2f));
                 animator.SetBool("IsDoubleJumping", true);
+
+                animatorWeapon.SetBool("Grounded", false);
             }
 
             else if (m_IsWall && !m_Grounded)
@@ -199,7 +206,10 @@ public class CharacterController2D : MonoBehaviour
                     Flip();
                     StartCoroutine(WaitToCheck(0.1f));
                     canDoubleJump = true;
+
                     animator.SetBool("IsWallSliding", true);
+
+                    animatorWeapon.SetBool("onwall", true);
                 }
                 isDashing = false;
 
@@ -221,6 +231,9 @@ public class CharacterController2D : MonoBehaviour
                     print("jump");
                     animator.SetBool("IsJumping", true);
                     animator.SetBool("JumpUp", true);
+
+                    animatorWeapon.SetBool("Grounded", false);
+
                     m_Rigidbody2D.velocity = new Vector2(0f, 0f);
                     m_Rigidbody2D.AddForce(new Vector2(transform.localScale.x * m_JumpForce * 1.2f, m_JumpForce));
                     jumpWallStartX = transform.position.x;
@@ -228,6 +241,7 @@ public class CharacterController2D : MonoBehaviour
                     canDoubleJump = true;
                     isWallSliding = false;
                     animator.SetBool("IsWallSliding", false);
+                    animatorWeapon.SetBool("onwall", false);
                     oldWallSlidding = false;
                     m_WallCheck.localPosition = new Vector3(Mathf.Abs(m_WallCheck.localPosition.x), m_WallCheck.localPosition.y, 0);
                     canMove = false;
@@ -236,6 +250,7 @@ public class CharacterController2D : MonoBehaviour
                 {
                     isWallSliding = false;
                     animator.SetBool("IsWallSliding", false);
+                    animatorWeapon.SetBool("onwall", false);
                     oldWallSlidding = false;
                     m_WallCheck.localPosition = new Vector3(Mathf.Abs(m_WallCheck.localPosition.x), m_WallCheck.localPosition.y, 0);
                     canDoubleJump = true;
@@ -246,6 +261,7 @@ public class CharacterController2D : MonoBehaviour
             {
                 isWallSliding = false;
                 animator.SetBool("IsWallSliding", false);
+                animatorWeapon.SetBool("onwall", false);
                 oldWallSlidding = false;
                 m_WallCheck.localPosition = new Vector3(Mathf.Abs(m_WallCheck.localPosition.x), m_WallCheck.localPosition.y, 0);
                 canDoubleJump = true;
@@ -317,6 +333,7 @@ public class CharacterController2D : MonoBehaviour
         canDoubleJump = true;
         isWallSliding = false;
         animator.SetBool("IsWallSliding", false);
+        animatorWeapon.SetBool("onwall", false);
         oldWallSlidding = false;
         m_WallCheck.localPosition = new Vector3(Mathf.Abs(m_WallCheck.localPosition.x), m_WallCheck.localPosition.y, 0);
     }
