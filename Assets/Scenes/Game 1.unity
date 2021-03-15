@@ -1359,7 +1359,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 1389632432}
   animator: {fileID: 1389632434}
-  animatorWeapon: {fileID: 1496487335}
   runSpeed: 40
   Raduis: 3
   BashAbleObj: {fileID: 0}
@@ -1446,7 +1445,6 @@ MonoBehaviour:
   animator: {fileID: 1083147521}
   particleJumpUp: {fileID: 1913935197}
   particleJumpDown: {fileID: 1624274635}
-  animatorWeapon: {fileID: 1496487335}
   OnFallEvent:
     m_PersistentCalls:
       m_Calls:
@@ -1499,12 +1497,6 @@ Rigidbody2D:
 --- !u!95 &1389632434 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 2515942595558481628, guid: 77661cf05a0ebe145aaebd84b5212c95,
-    type: 3}
-  m_PrefabInstance: {fileID: 1889055600}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1496487335 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5738741747548007347, guid: 77661cf05a0ebe145aaebd84b5212c95,
     type: 3}
   m_PrefabInstance: {fileID: 1889055600}
   m_PrefabAsset: {fileID: 0}
@@ -2235,6 +2227,12 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5738741747548007347, guid: 77661cf05a0ebe145aaebd84b5212c95,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: d37fe213ab4754e4fbbc3b0ead77a6c1,
+        type: 2}
     - target: {fileID: 7970549721488257854, guid: 77661cf05a0ebe145aaebd84b5212c95,
         type: 3}
       propertyPath: m_IsActive
@@ -2402,7 +2400,6 @@ MonoBehaviour:
   animator: {fileID: 1083147521}
   particleJumpUp: {fileID: 1913935197}
   particleJumpDown: {fileID: 1624274635}
-  animatorWeapon: {fileID: 0}
   OnFallEvent:
     m_PersistentCalls:
       m_Calls:
@@ -2461,7 +2458,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 1389632432}
   animator: {fileID: 1389632434}
-  animatorWeapon: {fileID: 0}
   runSpeed: 40
   Raduis: 3
   BashAbleObj: {fileID: 0}
